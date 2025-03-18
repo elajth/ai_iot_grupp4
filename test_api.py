@@ -18,7 +18,7 @@ def get_forecast(lon, lat):
 
 def find_place(place_name):
     """Omvandlar ett platsnamn till koordinater med hjälp av OpenStreetMap Nominatim API."""
-    url = f"https://nominatim.openstreetmap.org/search?city={place_name}&format=json"
+    url = f"https://nominatim.openstreetmap.org/search?city={place_name}&format=json&countrycodes=SE"
     
     # Ange din egen User-Agent (ersätt med din egen information)
     headers = {
@@ -51,11 +51,16 @@ lon = round(lon, 4)
 forecast = get_forecast(lon, lat)
 
 # Hämta senaste 'timeSeries' objektet
-latest_time_series = forecast['timeSeries'][-1]
+latest_time_series = forecast['timeSeries'][0]
+
+#for ts in forecast['timeSeries']:
+#    print(ts['validTime'])
+
 
 # Hitta de parametrar som heter 't' och 'ws'
 t_value = None
 ws_value = None
+validtime_value = latest_time_series['validTime']
 
 for param in latest_time_series['parameters']:
     if param['name'] == 't':
@@ -65,5 +70,6 @@ for param in latest_time_series['parameters']:
 
 # Skriv ut värdena för 't' och 'ws'
 print(f'Plats: {place_name}')
+print(f"Senaste prognos: {validtime_value}")
 print(f"Senaste temperatur: {t_value} °C")
 print(f"Senaste vindstyrka: {ws_value} m/s")
