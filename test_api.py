@@ -50,12 +50,8 @@ lat = round(lat, 4)
 lon = round(lon, 4)
 forecast = get_forecast(lon, lat)
 
-# Hämta senaste 'timeSeries' objektet
+# Hämta 'timeSeries' objektet som är närmast "nu"
 latest_time_series = forecast['timeSeries'][0]
-
-#for ts in forecast['timeSeries']:
-#    print(ts['validTime'])
-
 
 # Hitta de parametrar som heter 't' och 'ws'
 t_value = None
