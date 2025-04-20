@@ -169,8 +169,8 @@ st.video("https://www.youtube.com/watch?v=iEAUoMgnRvU")
 alert_placeholder = st.empty()
 
 # AWS credentials
-access_key = 'AKIA5V6I663AKNSGDS7M'
-secret_key = 'fhp25z60Nff8WeYXfOHEEBzXHnLYL15VIZNxbR1l'
+access_key = ''
+secret_key = ''
 
 # Sidebar for settings
 with st.sidebar:
